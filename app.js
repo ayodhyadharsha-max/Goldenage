@@ -283,7 +283,7 @@ function initLeadFormHandler() {
         // Reset form title to default
         const formTitle = document.querySelector('.form-card-title');
         if (formTitle) {
-          formTitle.textContent = 'Secure VIP Invitation';
+          formTitle.textContent = 'Free Consultation — No Charges';
         }
       }, 1500);
     })

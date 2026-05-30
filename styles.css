@@ -1373,3 +1373,132 @@ a {
     display: grid;
   }
 }
+
+/* ----------------------------------------------------
+   Google Ads Alignment Badges & Utilities
+------------------------------------------------------- */
+.hero-trust-badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  background-color: rgba(18, 22, 26, 0.55);
+  padding: 6px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.hero-trust-badge.RERA-badge {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background-color: rgba(197, 168, 128, 0.05);
+}
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.hero-cagr-teaser {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: rgba(197, 168, 128, 0.08);
+  border-left: 3px solid var(--accent-gold);
+  padding: 10px 16px;
+  border-radius: 0 4px 4px 0;
+  width: fit-content;
+}
+
+.hero-cagr-teaser strong {
+  color: var(--accent-gold);
+}
+
+.hero-cagr-teaser .teaser-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-gold);
+}
+
+.hero-cagr-teaser .teaser-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.hero-cagr-teaser .teaser-link:hover {
+  color: var(--text-primary);
+}
+
+.btn-phone-hero {
+  background-color: rgba(18, 22, 26, 0.6);
+  color: var(--accent-gold);
+  border: 1.5px solid var(--accent-gold);
+  transition: var(--transition-smooth);
+}
+
+.btn-phone-hero:hover {
+  background-color: var(--accent-gold);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+}
+
+.hero-contact-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background-color: rgba(18, 22, 26, 0.4);
+  border: 1px dashed var(--border-color);
+  padding: 8px 14px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.hero-contact-badge .badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent-gold);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(197, 168, 128, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(197, 168, 128, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(197, 168, 128, 0);
+  }
+}
+
+.hero-contact-badge .visit-label {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
