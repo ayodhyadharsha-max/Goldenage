@@ -238,8 +238,8 @@ function initLeadFormHandler() {
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = `<span>Securing Invitation...</span>`;
 
-    // Send data to goldenagelandbase9@gmail.com via FormSubmit.co
-    fetch("https://formsubmit.co/ajax/goldenagelandbase9@gmail.com", {
+    // Send data securely via FormSubmit.co token
+    fetch("https://formsubmit.co/ajax/0e4e68deb8dcbb57115100a8d814cf21", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
