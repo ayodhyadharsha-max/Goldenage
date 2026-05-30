@@ -173,7 +173,7 @@ function initCardSelection() {
 }
 
 /* ----------------------------------------------------
-   Form Validation & Mock Lead Submission
+   Form Validation & Live Lead Submission to Email
 ------------------------------------------------------- */
 function initLeadFormHandler() {
   const form = document.getElementById('qualifying-lead-form');
@@ -181,6 +181,22 @@ function initLeadFormHandler() {
   const submitBtn = document.getElementById('submit-form-button');
 
   if (!form || !feedback) return;
+
+  const budgetMap = {
+    '3-5-cr': '₹3.0 Crore – ₹5.0 Crore',
+    '5-10-cr': '₹5.0 Crore – ₹10.0 Crore',
+    '10-cr-plus': '₹10.0 Crore +'
+  };
+  const configMap = {
+    '3-bhk': '3 BHK Luxury Flat',
+    '4-bhk': '4 BHK Premium Residence',
+    'penthouse': 'Penthouse / Duplex'
+  };
+  const locationMap = {
+    'dwarka-expressway': 'Dwarka Expressway Corridor',
+    'new-gurgaon': 'New Gurgaon Sectors',
+    'golf-course-ext': 'Golf Course Extension Rd'
+  };
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -220,33 +236,64 @@ function initLeadFormHandler() {
     // Submit state loading indicator
     submitBtn.disabled = true;
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Validating Criteria...</span>`;
+    submitBtn.innerHTML = `<span>Securing Invitation...</span>`;
 
-    // Simulate luxury lead dispatch server call
-    setTimeout(() => {
+    // Send data to goldenagelandbase9@gmail.com via FormSubmit.co
+    fetch("https://formsubmit.co/ajax/goldenagelandbase9@gmail.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: `New VIP Lead: ${name} (${budgetMap[budget] || budget})`,
+        _replyto: email,
+        "Full Name": name,
+        "Phone Number": phone,
+        "Email Address": email,
+        "Budget Range": budgetMap[budget] || budget,
+        "Desired Configuration": configMap[config] || config,
+        "Preferred Location": locationMap[location] || location,
+        "Selected Project/Context": document.getElementById('selected-project').value
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
-      
+
       // Success Response
       feedback.classList.add('success');
-      feedback.textContent = `Invitation Secured! Our Private Wealth Executive will contact you shortly at ${phone}.`;
-      
+      feedback.textContent = `VIP Invitation Secured! Inquiry sent successfully.`;
+
       // Redirect to WhatsApp chat after successful signup (optional UX delight)
       const encodedMsg = encodeURIComponent(
-        `Hello GoldenAge Landbase, I have registered my interest for luxury residences in Gurgaon. Name: ${name}, Configuration: ${config}, Budget: ${budget}. Please share the portfolio.`
+        `Hello GoldenAge Landbase, I have registered my interest for luxury residences in Gurgaon. Name: ${name}, Configuration: ${configMap[config] || config}, Budget: ${budgetMap[budget] || budget}. Please share the portfolio.`
       );
-      
+
       setTimeout(() => {
         window.open(`https://wa.me/919311996911?text=${encodedMsg}`, '_blank');
         form.reset();
-        
+
         // Reset form title to default
         const formTitle = document.querySelector('.form-card-title');
         if (formTitle) {
           formTitle.textContent = 'Secure VIP Invitation';
         }
       }, 1500);
-
-    }, 1800);
+    })
+    .catch(error => {
+      console.error('Submission Error:', error);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      
+      feedback.classList.add('error');
+      feedback.textContent = 'Something went wrong. Please check your network or contact us via WhatsApp directly.';
+    });
   });
 }
