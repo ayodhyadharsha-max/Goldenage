@@ -107,7 +107,7 @@ function initRoiCalculator() {
 
   if (!capitalSlider || !yearsSlider) return;
 
-  const cagr = 0.125; // 12.5% projected capital growth
+  const cagr = 0.15; // 15% projected capital growth
   const rentalYield = 0.04; // 4% net rental yield
 
   function formatCr(value) {
