@@ -272,13 +272,7 @@ function initLeadFormHandler() {
       feedback.classList.add('success');
       feedback.textContent = `VIP Invitation Secured! Inquiry sent successfully.`;
 
-      // Redirect to WhatsApp chat after successful signup (optional UX delight)
-      const encodedMsg = encodeURIComponent(
-        `Hello GoldenAge Landbase, I have registered my interest for luxury residences in Gurgaon. Name: ${name}, Configuration: ${configMap[config] || config}, Budget: ${budgetMap[budget] || budget}. Please share the portfolio.`
-      );
-
       setTimeout(() => {
-        window.open(`https://wa.me/919311996911?text=${encodedMsg}`, '_blank');
         form.reset();
 
         // Reset form title to default
@@ -294,7 +288,7 @@ function initLeadFormHandler() {
       submitBtn.innerHTML = originalText;
       
       feedback.classList.add('error');
-      feedback.textContent = 'Something went wrong. Please check your network or contact us via WhatsApp directly.';
+      feedback.textContent = 'Something went wrong. Please check your network connection and try again.';
     });
   });
 }

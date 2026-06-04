@@ -1223,46 +1223,7 @@ a {
   color: var(--accent-gold);
 }
 
-/* ----------------------------------------------------
-   Floating Fixed CTAs (Mobile Layout)
-------------------------------------------------------- */
-.floating-cta-panel {
-  display: none; /* Only show on tablets and mobile screens */
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  grid-template-columns: 1fr 1.2fr;
-  height: 60px;
-  z-index: 998;
-  border-top: 1px solid var(--border-color);
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
-}
 
-.floating-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.88rem;
-  text-decoration: none;
-  min-height: 48px;
-}
-
-.floating-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.btn-float-call {
-  background-color: var(--phone-color);
-}
-
-.btn-float-wa {
-  background-color: var(--whatsapp-color);
-}
 
 /* ----------------------------------------------------
    Responsive Layout Media Queries
@@ -1373,14 +1334,7 @@ a {
     max-width: 100%;
   }
   
-  /* Show floating bottom CTAs and adjust body margin */
-  body {
-    padding-bottom: 60px;
-  }
-  
-  .floating-cta-panel {
-    display: grid;
-  }
+
 }
 
 /* ----------------------------------------------------
